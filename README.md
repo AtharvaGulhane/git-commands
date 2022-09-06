@@ -40,3 +40,19 @@ git pull -> if remote upstream branch is set already
 git branch -d branch_name -> delete a branch
 
 git merge master -> merge master branch to existing new_branch
+
+git reset --> to reset git staging for whole repository or folder inside repository
+
+git reset filename.ext -> to reset git staging for the particular file filename.ext
+
+git log --> to check commits and logs of changes-with commit msgs
+
+git reset HEAD~n -->> to rolln=back - unstage and uncommit past n-number of  changes
+
+
+git reset --hard HEAD~n -->> to uncommit unstage and undo all changes
+
+git reset @%^HASHKEY --> get hashkey from log and reset to uncommit and unstage changes
+
+git reset --hard @#$%^HASHKEY -->> to uncommit unstage and undo all changes for the commit with oparticular hashkey.
+
