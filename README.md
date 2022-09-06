@@ -19,3 +19,24 @@ git remote -v -- used to check currently connected repo
 
 git push -u origin master
 
+once -u is configured then git push directly works as expected and intended
+
+git branch -> to show what brancehs n check which branch youy are in is marked by *
+
+git checkout  branchname -> to create a new branch and switch branch
+
+git checkout branchname_2--> to switch between branches
+
+git checkout -b new_branchname --> to create a branch
+
+git push -u origin new_bran --> So to create a new remote repo for the local new_bran to set for upstream
+
+git merge branch_name -> merge branch with master branch
+
+git pull -u origin master --> to set branch for pull request
+
+git pull -> if remote upstream branch is set already
+
+git branch -d branch_name -> delete a branch
+
+git merge master -> merge master branch to existing new_branch
