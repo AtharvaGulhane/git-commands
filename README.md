@@ -1,58 +1,279 @@
-# git-commands
+# Git & GitHub Learning Roadmap
 
--- This is the git commands we would need for generic use and few specific use cases.
+This roadmap provides a step-by-step guide to learning and using Git commands along with GitHub. Each section introduces essential commands with examples.
 
+---
 
-##Sub heading using '##'
+## 1. Initial Setup
 
-git clone - to clone repo
-git add . - for adding git to track the files in the exisitng folder
-git add file.extension - to add a specific file for git to track.
+### 1.1 Configure Git
 
-git commit -m "msg for commit" - to commit changes to git
+Before using Git, configure your username and email. These details will be attached to your commits.
 
-#new repo to start from scratch
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
 
-git remote add origin https://github.com/AtharvaGulhane/demo-repo.git - to add the current local repo to git repo
+Check your configuration:
 
-git remote -v -- used to check currently connected repo
+```bash
+git config --list
+```
 
-git push -u origin master
+---
 
-once -u is configured then git push directly works as expected and intended
+## 2. Creating or Cloning a Repository
 
-git branch -> to show what brancehs n check which branch youy are in is marked by *
+### 2.1 Create a New Repository
 
-git checkout  branchname -> to create a new branch and switch branch
+```bash
+git init
+```
 
-git checkout branchname_2--> to switch between branches
+### 2.2 Clone an Existing Repository
 
-git checkout -b new_branchname --> to create a branch
+To clone a repository from GitHub, use:
 
-git push -u origin new_bran --> So to create a new remote repo for the local new_bran to set for upstream
+```bash
+git clone https://github.com/username/repository.git
+```
 
-git merge branch_name -> merge branch with master branch
+---
 
-git pull -u origin master --> to set branch for pull request
+## 3. Basic Workflow: Add, Commit, Push
 
-git pull -> if remote upstream branch is set already
+### 3.1 Add Files to Staging Area
 
-git branch -d branch_name -> delete a branch
+After modifying or adding files, you can stage them for commit:
 
-git merge master -> merge master branch to existing new_branch
+```bash
+git add filename
+# Add all files
+git add .
+```
 
-git reset --> to reset git staging for whole repository or folder inside repository
+### 3.2 Commit Changes
 
-git reset filename.ext -> to reset git staging for the particular file filename.ext
+Commit the changes with a meaningful message:
 
-git log --> to check commits and logs of changes-with commit msgs
+```bash
+git commit -m "Your commit message"
+```
 
-git reset HEAD~n -->> to rolln=back - unstage and uncommit past n-number of  changes
+### 3.3 Push to GitHub
 
+To send your changes to GitHub, use:
 
-git reset --hard HEAD~n -->> to uncommit unstage and undo all changes
+```bash
+git push origin branch_name
+```
 
-git reset @%^HASHKEY --> get hashkey from log and reset to uncommit and unstage changes
+---
 
-git reset --hard @#$%^HASHKEY -->> to uncommit unstage and undo all changes for the commit with oparticular hashkey.
+## 4. Branching
 
+### 4.1 Create a New Branch
+
+Branching allows you to work on different versions of your project simultaneously.
+
+```bash
+git branch new_feature
+```
+
+### 4.2 Switch Branches
+
+```bash
+git checkout new_feature
+```
+
+### 4.3 Create and Switch to a New Branch
+
+```bash
+git checkout -b new_feature
+```
+
+### 4.4 List All Branches
+
+```bash
+git branch
+```
+
+---
+
+## 5. Merging & Pull Requests
+
+### 5.1 Merge Branches
+
+To merge a feature branch into the main branch:
+
+```bash
+git checkout main
+git merge new_feature
+```
+
+### 5.2 Delete a Branch After Merging
+
+```bash
+git branch -d new_feature
+```
+
+### 5.3 Create a Pull Request
+
+To merge code through GitHub, push your branch and create a pull request from the repository’s GitHub page.
+
+---
+
+## 6. Collaborating with Others
+
+### 6.1 Fetch and Pull Changes from GitHub
+
+Fetch the latest changes without merging:
+
+```bash
+git fetch
+```
+
+Pull changes and merge them:
+
+```bash
+git pull origin main
+```
+
+---
+
+## 7. Undoing Changes
+
+### 7.1 Unstage a File
+
+If you added a file to the staging area but want to remove it:
+
+```bash
+git reset filename
+```
+
+### 7.2 Revert the Last Commit
+
+```bash
+git revert HEAD
+```
+
+### 7.3 Discard Changes in a File
+
+```bash
+git checkout -- filename
+```
+
+---
+
+## 8. Advanced Git
+
+### 8.1 Rebase
+
+Rebase is used to integrate changes from one branch to another:
+
+```bash
+git rebase branch_name
+```
+
+### 8.2 Squash Commits
+
+Squash multiple commits into one:
+
+```bash
+git rebase -i HEAD~n
+# Replace "pick" with "squash" for commits to combine
+```
+
+---
+
+## 9. GitHub Authentication (SSH Keys)
+
+### 9.1 Set Up SSH
+
+Generate SSH keys for GitHub authentication:
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your.email@example.com"
+```
+
+Add the SSH key to your GitHub account by copying the key content from:
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+Add it to GitHub under `Settings > SSH and GPG keys`.
+
+### 9.2 Clone with SSH
+
+After setting up SSH, clone repositories using:
+
+```bash
+git clone git@github.com:username/repository.git
+```
+
+---
+
+## 10. GitHub Pages (For Hosting)
+
+### 10.1 Deploy Your Project Using GitHub Pages
+
+Create a branch named `gh-pages`:
+
+```bash
+git checkout -b gh-pages
+git push origin gh-pages
+```
+
+Enable GitHub Pages in the repository’s settings.
+
+---
+
+## 11. Working with Submodules
+
+### 11.1 Add a Submodule
+
+```bash
+git submodule add https://github.com/username/repository.git path_to_submodule
+```
+
+### 11.2 Update Submodules
+
+```bash
+git submodule update --remote
+```
+
+---
+
+## 12. Git Tags
+
+### 12.1 Create a Tag
+
+```bash
+git tag -a v1.0 -m "Version 1.0 release"
+```
+
+### 12.2 Push Tags to GitHub
+
+```bash
+git push origin --tags
+```
+
+---
+
+## 13. Dealing with Conflicts
+
+### 13.1 Resolve Merge Conflicts
+
+When you encounter conflicts during a merge, Git will mark the conflicts in the affected files. Manually resolve them and then:
+
+```bash
+git add conflict_file
+git commit
+```
+
+---
+
+This roadmap provides a starting point for learning Git & GitHub. Follow the steps in order, and use the commands as examples to gain hands-on experience.
+```
